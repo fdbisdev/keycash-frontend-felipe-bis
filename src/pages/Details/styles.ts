@@ -1,10 +1,10 @@
 import styled from 'styled-components/native';
 
-import { Dimensions } from 'react-native';
-
 import FA5Icon from 'react-native-vector-icons/FontAwesome5';
 
-const SCREEN_WIDHT = Dimensions.get('screen').width;
+import { RFValue } from 'react-native-responsive-fontsize';
+
+import { SCREEN_WIDTH, STATUSBAR_HEIGHT } from '../../../utils/utils';
 
 export const Container = styled.ScrollView`
   flex: 1;
@@ -18,7 +18,7 @@ export const BackButton = styled(FA5Icon).attrs({
 
 export const BackButtonWrappper = styled.TouchableOpacity`
   position: absolute;
-  top: 42px;
+  top: ${STATUSBAR_HEIGHT + RFValue(4)}px;
   left: 8px;
   z-index: 2;
 `;
@@ -30,7 +30,7 @@ export const HouseBannerWrapper = styled.View`
 export const HouseBannerLarge = styled.Image.attrs({
   resizeMode: 'cover',
 })`
-  width: ${SCREEN_WIDHT}px;
+  width: ${SCREEN_WIDTH}px;
   height: 400px;
 `;
 
@@ -44,7 +44,7 @@ export const HouseWrapper = styled.View.attrs({
 
 export const HouseInfoWrapper = styled.View`
   flex-direction: row;
-  width: ${SCREEN_WIDHT}px;
+  width: ${SCREEN_WIDTH}px;
   align-items: center;
   justify-content: space-evenly;
 `;
@@ -63,6 +63,14 @@ export const HouseLatLong = styled.Text`
   font-size: 14px;
   align-self: flex-end;
   margin-bottom: 4px;
+`;
+
+export const HouseImageDetailsWrapper = styled.View.attrs({
+  borderBottomColor: 'black',
+  borderBottomWidth: 1,
+})`
+  background-color: #ffffff;
+  padding: 14px;
 `;
 
 export const HouseDetailsWrapper = styled.View.attrs({
@@ -110,4 +118,8 @@ export const HouseAdressTitle = styled.Text`
   font-size: 14px;
   font-weight: bold;
   padding: 4px 18px;
+`;
+
+export const HouseImages = styled.View`
+  flex: 1;
 `;

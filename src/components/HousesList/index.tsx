@@ -28,6 +28,7 @@ const HousesList = ({ list }: HouseListProps) => {
       <>
         {item.publish && (
           <HousesListElement
+            houseID={item.id}
             houseAdress={item.address}
             houseImages={item.images}
             housePrice={item.price}

@@ -15,6 +15,7 @@ const HomeScreen = () => {
 const HouseDetailsScreen = ({ route }: HouseDetailsProps) => {
   return (
     <Details
+      houseID={route.params.houseID}
       houseAdress={route.params.houseAdress}
       houseImages={route.params.houseImages}
       priceBrazilCurrency={route.params.priceBrazilCurrency}

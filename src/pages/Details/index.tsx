@@ -1,8 +1,17 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
-import { StatusBar } from 'react-native';
+import Animated, {
+  useAnimatedStyle,
+  interpolate,
+  Extrapolate,
+  useSharedValue,
+} from 'react-native-reanimated';
+
+import ImageSlider from '../../components/ImageSlider';
+
 import { AdressProps } from '../../../utils/types';
 
 import {
@@ -23,9 +32,12 @@ import {
   InfoTitle,
   InfoText,
   HouseAdressTitle,
+  HouseImages,
+  HouseImageDetailsWrapper,
 } from './styles';
 
 interface Houses {
+  houseID: number;
   houseAdress: AdressProps;
   houseImages: Array<string>;
   priceBrazilCurrency: string;
@@ -36,6 +48,7 @@ interface Houses {
 }
 
 const Details = ({
+  houseID,
   houseAdress,
   houseImages,
   priceBrazilCurrency,
@@ -45,10 +58,17 @@ const Details = ({
   houseUsableArea,
 }: Houses) => {
   const navigation = useNavigation();
+  const scrollY = useSharedValue(0);
 
   const handleReturnHome = () => {
     navigation.goBack();
   };
+
+  const sliderHouseStyleAnimation = useAnimatedStyle(() => {
+    return {
+      opacity: interpolate(scrollY.value, [0, 150], [1, 0], Extrapolate.CLAMP),
+    };
+  });
 
   return (
     <>
@@ -61,11 +81,9 @@ const Details = ({
         <BackButtonWrappper onPress={handleReturnHome}>
           <BackButton />
         </BackButtonWrappper>
-
         <HouseBannerWrapper>
           <HouseBannerLarge source={{ uri: houseImages[0] }} />
         </HouseBannerWrapper>
-
         <HouseWrapper>
           <HouseInfoWrapper>
             <PriceContainer>
@@ -75,7 +93,6 @@ const Details = ({
             <HouseLatLong>{`(${houseAdress.geolocation.lat}, ${houseAdress.geolocation.lng})`}</HouseLatLong>
           </HouseInfoWrapper>
         </HouseWrapper>
-
         <HouseDetailsWrapper>
           <HouseDetailsContainer>
             <InfoContainer>
@@ -96,10 +113,18 @@ const Details = ({
             </InfoContainer>
           </HouseDetailsContainer>
         </HouseDetailsWrapper>
-
         <HouseDetailsWrapper>
           <HouseAdressTitle>{houseAdress.formattedAddress}</HouseAdressTitle>
         </HouseDetailsWrapper>
+        <HouseImageDetailsWrapper>
+          <Animated.View style={sliderHouseStyleAnimation}>
+            <HouseImages>
+              <ImageSlider
+                imagesUrl={{ id: String(houseID), photo: houseImages }}
+              />
+            </HouseImages>
+          </Animated.View>
+        </HouseImageDetailsWrapper>
       </Container>
     </>
   );

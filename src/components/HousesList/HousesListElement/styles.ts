@@ -1,13 +1,11 @@
 import styled from 'styled-components/native';
 
-import { Dimensions } from 'react-native';
-
 import FA5Icon from 'react-native-vector-icons/FontAwesome5';
 
-const { width: DEVICE_WIDTH } = Dimensions.get('screen');
+import { SCREEN_WIDTH } from '../../../../utils/utils';
 
 export const Container = styled.View.attrs({
-  width: DEVICE_WIDTH - 20,
+  width: SCREEN_WIDTH - 20,
   shadowColor: '#000',
   shadowOffset: {
     width: 0,

@@ -21,6 +21,7 @@ import {
 } from './styles';
 
 interface HouselistElementProps {
+  houseID: number;
   houseAdress: AdressProps;
   houseImages: Array<string>;
   housePrice: number;
@@ -31,6 +32,7 @@ interface HouselistElementProps {
 }
 
 const HousesListElement = ({
+  houseID,
   houseAdress,
   houseImages,
   housePrice,
@@ -45,6 +47,7 @@ const HousesListElement = ({
 
   const handlePressHouseCard = () => {
     navigation.navigate('HouseDetails', {
+      houseID,
       houseAdress,
       houseImages,
       priceBrazilCurrency,

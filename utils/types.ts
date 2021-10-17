@@ -2,6 +2,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 export type StackParamList = {
   HouseDetails: {
+    houseID: number;
     houseAdress: AdressProps;
     houseImages: Array<string>;
     priceBrazilCurrency: string;
