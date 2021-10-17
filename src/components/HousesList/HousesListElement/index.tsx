@@ -1,5 +1,8 @@
 import React from 'react';
-import { AdressProps } from '../../types';
+
+import { useNavigation } from '@react-navigation/native';
+
+import { AdressProps, HouseDetailsProps } from '../../../../utils/types';
 
 import {
   Container,
@@ -36,8 +39,22 @@ const HousesListElement = ({
   houseParkingSpaces,
   houseUsableArea,
 }: HouselistElementProps) => {
+  const navigation = useNavigation<HouseDetailsProps['navigation']>();
+
+  const handlePressHouseCard = () => {
+    navigation.navigate('HouseDetails', {
+      houseAdress,
+      houseImages,
+      housePrice,
+      houseBathrooms,
+      houseBedrooms,
+      houseParkingSpaces,
+      houseUsableArea,
+    });
+  };
+
   return (
-    <TouchableCard>
+    <TouchableCard onPress={handlePressHouseCard}>
       <Container>
         <HouseImage source={{ uri: houseImages[0] }} />
         <InfoWrapper>

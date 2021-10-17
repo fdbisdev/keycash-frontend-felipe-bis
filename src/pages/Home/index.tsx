@@ -20,7 +20,6 @@ const Home = () => {
   const getRealEstate = useCallback(async () => {
     const allRealEstate: any = await getAllRealEstate();
     setRealEstate(allRealEstate.data);
-    console.log(realEstate);
     setLoading(false);
   }, []);
 
@@ -30,7 +29,6 @@ const Home = () => {
 
   return (
     <>
-
       <Container>
         <Header>
           <PageName>Página Inicial</PageName>

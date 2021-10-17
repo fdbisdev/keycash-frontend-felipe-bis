@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList } from 'react-native';
-import { AdressProps } from '../types';
+import { AdressProps } from '../../../utils/types';
 
 import HousesListElement from './HousesListElement';
 
