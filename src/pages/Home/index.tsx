@@ -29,7 +29,11 @@ const Home = () => {
 
   return (
     <>
-      <StatusBar backgroundColor="#f10074" barStyle="light-content" />
+      <StatusBar
+        translucent
+        barStyle="light-content"
+        backgroundColor="#f10074"
+      />
       <Container>
         <Header>
           <PageName>Página Inicial</PageName>

@@ -2,6 +2,10 @@ import styled from 'styled-components/native';
 
 import FA5Icon from 'react-native-vector-icons/FontAwesome5';
 
+import { RFValue } from 'react-native-responsive-fontsize';
+
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+
 export const Container = styled.View`
   flex: 1;
   background-color: #ede8fc;
@@ -14,6 +18,7 @@ export const Header = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin-top: ${getStatusBarHeight() + RFValue(10)}px;
 `;
 
 export const PageName = styled.Text`

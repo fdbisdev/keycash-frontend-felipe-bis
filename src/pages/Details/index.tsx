@@ -15,6 +15,14 @@ import {
   HouseInfoWrapper,
   HousePrice,
   HouseLatLong,
+  HousePriceCurrency,
+  HouseDetailsWrapper,
+  HouseDetailsContainer,
+  PriceContainer,
+  InfoContainer,
+  InfoTitle,
+  InfoText,
+  HouseAdressTitle,
 } from './styles';
 
 interface Houses {
@@ -44,20 +52,54 @@ const Details = ({
 
   return (
     <>
-      <StatusBar backgroundColor="#f5f5f5" barStyle="dark-content" />
+      <StatusBar
+        translucent
+        barStyle="light-content"
+        backgroundColor="transparent"
+      />
       <Container>
         <BackButtonWrappper onPress={handleReturnHome}>
           <BackButton />
         </BackButtonWrappper>
+
         <HouseBannerWrapper>
           <HouseBannerLarge source={{ uri: houseImages[0] }} />
         </HouseBannerWrapper>
+
         <HouseWrapper>
           <HouseInfoWrapper>
-            <HousePrice>{`R$ ${priceBrazilCurrency}`}</HousePrice>
-            <HouseLatLong>{`${houseAdress.geolocation.lat}, ${houseAdress.geolocation.lng}`}</HouseLatLong>
+            <PriceContainer>
+              <HousePriceCurrency>R$ </HousePriceCurrency>
+              <HousePrice>{priceBrazilCurrency}</HousePrice>
+            </PriceContainer>
+            <HouseLatLong>{`(${houseAdress.geolocation.lat}, ${houseAdress.geolocation.lng})`}</HouseLatLong>
           </HouseInfoWrapper>
         </HouseWrapper>
+
+        <HouseDetailsWrapper>
+          <HouseDetailsContainer>
+            <InfoContainer>
+              <InfoText>{`${houseUsableArea} km²`}</InfoText>
+              <InfoTitle>Área</InfoTitle>
+            </InfoContainer>
+            <InfoContainer>
+              <InfoText>{houseBathrooms}</InfoText>
+              <InfoTitle>Banheiros</InfoTitle>
+            </InfoContainer>
+            <InfoContainer>
+              <InfoText>{houseBedrooms}</InfoText>
+              <InfoTitle>Quartos</InfoTitle>
+            </InfoContainer>
+            <InfoContainer>
+              <InfoText>{houseParkingSpaces}</InfoText>
+              <InfoTitle>Vagas</InfoTitle>
+            </InfoContainer>
+          </HouseDetailsContainer>
+        </HouseDetailsWrapper>
+
+        <HouseDetailsWrapper>
+          <HouseAdressTitle>{houseAdress.formattedAddress}</HouseAdressTitle>
+        </HouseDetailsWrapper>
       </Container>
     </>
   );
