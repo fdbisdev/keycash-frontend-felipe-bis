@@ -26,6 +26,8 @@ interface ChangeImageProps {
 const ImageSlider = ({ imagesUrl }: Props) => {
   const [imageIndex, setImageIndex] = useState(0);
 
+  let indexBullet = 0;
+
   const indexChanged = useRef((info: ChangeImageProps) => {
     const index = info.viewableItems[0].index!;
     setImageIndex(index);
@@ -34,14 +36,13 @@ const ImageSlider = ({ imagesUrl }: Props) => {
   return (
     <Container>
       <ImageIndexes>
-        {imagesUrl.photo.map((item, index) => (
-          <Bullet key={item} active={index === imageIndex} />
-        ))}
+        {imagesUrl.photo.map((_, index) => {
+          indexBullet += 1;
+          return <Bullet key={indexBullet} active={index === imageIndex} />;
+        })}
       </ImageIndexes>
-
       <FlatList
         data={imagesUrl.photo}
-        keyExtractor={item => item}
         renderItem={({ item }) => (
           <HouseImageWrapper>
             <HouseImage source={{ uri: item }} resizeMode="contain" />

@@ -1,8 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, StatusBar } from 'react-native';
 
-import Modal from 'react-native-modal';
-
 import HousesList from '../../components/HousesList';
 
 import getAllRealEstate from '../../services/api';
@@ -11,8 +9,6 @@ import {
   Container,
   Header,
   PageName,
-  FilterIcon,
-  FilterWrapper,
   LoadingWrapper,
 } from './styles';
 
@@ -51,9 +47,6 @@ const Home = () => {
 
         <Header>
           <PageName>Página Inicial</PageName>
-          <FilterWrapper>
-            <FilterIcon name="sliders-h" />
-          </FilterWrapper>
         </Header>
 
         {loading ? (

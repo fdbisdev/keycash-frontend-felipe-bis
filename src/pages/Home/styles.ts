@@ -1,7 +1,5 @@
 import styled from 'styled-components/native';
 
-import FA5Icon from 'react-native-vector-icons/FontAwesome5';
-
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import { STATUSBAR_HEIGHT } from '../../../utils/utils';
@@ -32,14 +30,4 @@ export const LoadingWrapper = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-`;
-
-export const FilterWrapper = styled.TouchableOpacity``;
-
-export const FilterIcon = styled(FA5Icon).attrs({
-  color: '#fff',
-  solid: true,
-  size: 18,
-})`
-  padding: 16px;
 `;
