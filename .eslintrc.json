@@ -1,9 +1,5 @@
 {
-  "globals": {
-    "__DEV__": "readonly"
-  },
     "env": {
-        "browser": true,
         "es2021": true
     },
     "extends": [
@@ -12,6 +8,9 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:prettier/recommended"
     ],
+    "globals": {
+      "__DEV__": "readonly"
+    },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
@@ -37,10 +36,6 @@
         ]
         }
       ],
-      "@typescript-eslint/no-use-before-define": [
-        "error"
-      ],
-      "no-use-before-define": "off",
       "import/extensions": [
         "error",
         "ignorePackages",
@@ -49,8 +44,16 @@
           "tsx": "never"
         }
       ],
-     "react/react-in-jsx-scope": "off",
-     "prettier/prettier": "error"
+      "no-use-before-define": "off",
+      "@typescript-eslint/no-use-before-define": [
+        "error"
+      ],
+      "react/react-in-jsx-scope": "off",
+      "prettier/prettier": [
+        "error", {
+          "endOfLine": "auto"
+        }
+      ]
     },
     "settings": {
       "import/resolver": {
