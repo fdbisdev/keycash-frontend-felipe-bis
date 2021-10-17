@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, StatusBar } from 'react-native';
 
 import HousesList from '../../components/HousesList';
 import getAllRealEstate from '../../services/api';
@@ -29,6 +29,7 @@ const Home = () => {
 
   return (
     <>
+      <StatusBar backgroundColor="#f10074" barStyle="light-content" />
       <Container>
         <Header>
           <PageName>Página Inicial</PageName>

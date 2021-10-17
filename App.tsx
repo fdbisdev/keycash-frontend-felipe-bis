@@ -1,5 +1,4 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -18,7 +17,7 @@ const HouseDetailsScreen = ({ route }: HouseDetailsProps) => {
     <Details
       houseAdress={route.params.houseAdress}
       houseImages={route.params.houseImages}
-      housePrice={route.params.housePrice}
+      priceBrazilCurrency={route.params.priceBrazilCurrency}
       houseBathrooms={route.params.houseBathrooms}
       houseBedrooms={route.params.houseBedrooms}
       houseParkingSpaces={route.params.houseParkingSpaces}
@@ -32,7 +31,6 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <>
-      <StatusBar backgroundColor="#f10074" barStyle="light-content" />
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Home" component={HomeScreen} />

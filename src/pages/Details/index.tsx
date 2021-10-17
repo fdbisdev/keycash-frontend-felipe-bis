@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 
+import { StatusBar } from 'react-native';
 import { AdressProps } from '../../../utils/types';
 
 import {
@@ -10,12 +11,16 @@ import {
   BackButton,
   HouseBannerWrapper,
   HouseBannerLarge,
+  HouseWrapper,
+  HouseInfoWrapper,
+  HousePrice,
+  HouseLatLong,
 } from './styles';
 
 interface Houses {
   houseAdress: AdressProps;
   houseImages: Array<string>;
-  housePrice: number;
+  priceBrazilCurrency: string;
   houseBathrooms: number;
   houseBedrooms: number;
   houseParkingSpaces: number;
@@ -25,7 +30,7 @@ interface Houses {
 const Details = ({
   houseAdress,
   houseImages,
-  housePrice,
+  priceBrazilCurrency,
   houseBathrooms,
   houseBedrooms,
   houseParkingSpaces,
@@ -38,14 +43,23 @@ const Details = ({
   };
 
   return (
-    <Container>
-      <BackButtonWrappper onPress={handleReturnHome}>
-        <BackButton />
-      </BackButtonWrappper>
-      <HouseBannerWrapper>
-        <HouseBannerLarge source={{ uri: houseImages[0] }} />
-      </HouseBannerWrapper>
-    </Container>
+    <>
+      <StatusBar backgroundColor="#f5f5f5" barStyle="dark-content" />
+      <Container>
+        <BackButtonWrappper onPress={handleReturnHome}>
+          <BackButton />
+        </BackButtonWrappper>
+        <HouseBannerWrapper>
+          <HouseBannerLarge source={{ uri: houseImages[0] }} />
+        </HouseBannerWrapper>
+        <HouseWrapper>
+          <HouseInfoWrapper>
+            <HousePrice>{`R$ ${priceBrazilCurrency}`}</HousePrice>
+            <HouseLatLong>{`${houseAdress.geolocation.lat}, ${houseAdress.geolocation.lng}`}</HouseLatLong>
+          </HouseInfoWrapper>
+        </HouseWrapper>
+      </Container>
+    </>
   );
 };
 

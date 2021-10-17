@@ -4,7 +4,7 @@ export type StackParamList = {
   HouseDetails: {
     houseAdress: AdressProps;
     houseImages: Array<string>;
-    housePrice: number;
+    priceBrazilCurrency: string;
     houseBathrooms: number;
     houseBedrooms: number;
     houseParkingSpaces: number;

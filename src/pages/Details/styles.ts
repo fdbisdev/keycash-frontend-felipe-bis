@@ -33,3 +33,31 @@ export const HouseBannerLarge = styled.Image.attrs({
   width: ${SCREEN_WIDHT}px;
   height: 400px;
 `;
+
+export const HouseWrapper = styled.View`
+  padding: 10px;
+  background-color: #f5f5f5;
+`;
+
+export const HouseInfoWrapper = styled.View`
+  flex-direction: row;
+  width: ${SCREEN_WIDHT}px;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+export const HousePrice = styled.Text`
+  color: #4e5260;
+  font-size: 28px;
+  font-weight: bold;
+  padding: 4px;
+  margin-right: 32px;
+`;
+
+export const HouseLatLong = styled.Text`
+  color: #a0a0a0;
+  margin-left: 12px;
+  font-size: 14px;
+  align-self: flex-end;
+  margin-bottom: 4px;
+`;
