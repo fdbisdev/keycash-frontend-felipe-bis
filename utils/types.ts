@@ -28,3 +28,20 @@ export type HouseDetailsProps = NativeStackScreenProps<
   StackParamList,
   'HouseDetails'
 >;
+
+export interface BulletProps {
+  // eslint-disable-next-line react/require-default-props
+  active?: boolean;
+}
+
+export interface HouselistElementProps {
+  id: number;
+  address: AdressProps;
+  images: Array<string>;
+  price: number;
+  bathrooms: number;
+  bedrooms: number;
+  parkingSpaces: number;
+  usableArea: number;
+  publish: boolean;
+}

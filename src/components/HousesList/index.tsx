@@ -1,22 +1,10 @@
 import React from 'react';
 import { FlatList } from 'react-native';
-import { AdressProps } from '../../../utils/types';
+import { HouselistElementProps } from '../../../utils/types';
 
 import HousesListElement from './HousesListElement';
 
-import { Container } from './styles';
-
-interface HouselistElementProps {
-  id: number;
-  address: AdressProps;
-  images: Array<string>;
-  price: number;
-  bathrooms: number;
-  bedrooms: number;
-  parkingSpaces: number;
-  usableArea: number;
-  publish: boolean;
-}
+import { Container, EmptyMessage } from './styles';
 
 interface HouseListProps {
   list: HouselistElementProps[] | null | undefined;
@@ -44,11 +32,15 @@ const HousesList = ({ list }: HouseListProps) => {
 
   return (
     <Container>
-      <FlatList
-        data={list}
-        keyExtractor={item => String(item.id)}
-        renderItem={HouseListElement}
-      />
+      {list?.length === 0 ? (
+        <EmptyMessage>Sem resultados.</EmptyMessage>
+      ) : (
+        <FlatList
+          data={list}
+          keyExtractor={item => String(item.id)}
+          renderItem={HouseListElement}
+        />
+      )}
     </Container>
   );
 };

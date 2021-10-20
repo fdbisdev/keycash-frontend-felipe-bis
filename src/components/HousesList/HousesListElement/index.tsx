@@ -59,11 +59,7 @@ const HousesListElement = ({
   };
 
   const formatToBrazilCurrency = () => {
-    var priceFormatted = housePrice + '';
-    priceFormatted = priceFormatted.replace(/([0-9]{2})$/g, ",$1");
-    if (priceFormatted.length > 6)
-      priceFormatted = priceFormatted.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
-    setPriceBrazilCurrency(priceFormatted);
+    setPriceBrazilCurrency(new Intl.NumberFormat('pt-BR').format(housePrice));
   };
 
   useEffect(() => {
@@ -92,7 +88,7 @@ const HousesListElement = ({
             </HouseInfoWrapper>
             <HouseInfoWrapper>
               <InfoIcon name="ruler-combined" />
-              <HouseInfo>{`${houseUsableArea} km²`}</HouseInfo>
+              <HouseInfo>{`${houseUsableArea} m²`}</HouseInfo>
             </HouseInfoWrapper>
           </HouseInfoContainer>
           <HousePriceWrapper>

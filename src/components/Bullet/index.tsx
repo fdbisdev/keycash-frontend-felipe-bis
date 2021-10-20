@@ -1,12 +1,8 @@
 import React from 'react';
+import { BulletProps } from '../../../utils/types';
 
 import { Container } from './styles';
 
-interface Props {
-  // eslint-disable-next-line react/require-default-props
-  active?: boolean;
-}
-
-export default function Bullet({ active = false }: Props) {
+export default function Bullet({ active = false }: BulletProps) {
   return <Container active={active} />;
 }
